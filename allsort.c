@@ -22,7 +22,7 @@ void print_usage();
 void print_array(int* array,int size);
 
 #ifdef DEBUG
-void compair(int* array,int size);
+void compare(int* array,int size);
 #endif
 
 int main(int argc,char** argv)
@@ -30,7 +30,7 @@ int main(int argc,char** argv)
 	time_t begin_time,end_time;
 	int *array;
 #ifdef DEBUG
-	int * compairarray; //use an right answer to compair result;
+	int * comparearray; //use an right answer to compare result;
 #endif
 	int size = MAX_SIZE,count;
 	char method;
@@ -50,8 +50,8 @@ int main(int argc,char** argv)
 #endif
 	}
 #ifdef DEBUG
-	compairarray = malloc(sizeof(int) * size);
-	memcpy(compairarray,array,sizeof(int)*size);
+	comparearray = malloc(sizeof(int) * size);
+	memcpy(comparearray,array,sizeof(int)*size);
 	printf("befor sort\n");
 	print_array(array,size);
 #endif
@@ -97,7 +97,7 @@ int main(int argc,char** argv)
 #ifdef DEBUG
 	printf("after sort\n");
 	print_array(array,size);
-	compair(compairarray,size);
+	compare(comparearray,size);
 #endif
 	printf("time consume:%d\n",(int)(end_time - begin_time));
 	free(array);
@@ -285,10 +285,10 @@ void print_usage()
 }
 
 #ifdef DEBUG
-void compair(int *array,int size)
+void compare(int *array,int size)
 {
 	insertion_sort(array,size);
-	printf("for compair\n");
+	printf("for compare\n");
 	print_array(array,size);
 }
 #endif
